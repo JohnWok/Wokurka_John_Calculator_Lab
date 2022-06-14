@@ -65,8 +65,14 @@ void cMain::OnButtonClick(wxCommandEvent& evt)
 {
 	int id = evt.GetId(); 
 
+<<<<<<< Updated upstream
 
 	switch (id)
+=======
+	
+	
+	/*switch (id)
+>>>>>>> Stashed changes
 	{
 	case 100: {
 		display_box->AppendText("0");
@@ -171,5 +177,5 @@ void cMain::OnButtonClick(wxCommandEvent& evt)
 	}
 	default:
 		break;
-	}
+	}*/
 }
