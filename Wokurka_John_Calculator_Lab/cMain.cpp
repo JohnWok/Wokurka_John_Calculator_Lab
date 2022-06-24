@@ -1,4 +1,8 @@
 #include "cMain.h"
+#include "CalculatorProcessor.h"
+#include "wx\valnum.h"
+#include <iostream>
+
 
 wxBEGIN_EVENT_TABLE(cMain, wxFrame)
 EVT_BUTTON(100, cMain::OnButtonClick)
@@ -52,9 +56,12 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(200,200), wxSi
 	decimal_button = new wxButton(this, 119, "Decimal", wxPoint(170, 80), wxSize(60, 40));
 
 
-
+	wxIntegerValidator<unsigned long> intChecker(&m_value, wxNUM_VAL_THOUSANDS_SEPARATOR);
 	display_box = new wxTextCtrl(this,120 , "", wxPoint(10, 10), wxSize(200, 30));
-
+	display_box->SetValidator(intChecker); 
+	
+	
+	
 	
 }
 
@@ -64,82 +71,158 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(200,200), wxSi
 void cMain::OnButtonClick(wxCommandEvent& evt)
 {
 	int id = evt.GetId(); 
+	CalculatorProcessor* CalProcessor = CalculatorProcessor::GetInstance();
 
-	
 	switch (id)
 	{
 	case 100: {
 		display_box->AppendText("0");
+		UserValues.push_back(0);
 		break;
 	}
 	case 101: 
 	{
 		display_box->AppendText("1");
-		break; 
+		UserValues.push_back(1);
+		break;
 	}
 	case 102: 
 	{
 		display_box->AppendText("2");
-		break; 
+		UserValues.push_back(2);
+		break;
 	}
 	case 103: 
 	{
 		display_box->AppendText("3");
-		break; 
+		UserValues.push_back(3);
+		break;
 	}
 	case 104: 
 	{
 		display_box->AppendText("4");
-		break; 
+		UserValues.push_back(4);
+		break;
 	}
 	case 105: 
 	{
 		display_box->AppendText("5");
+		UserValues.push_back(5);
 		break; 
 	}
 	case 106: 
 	{
 		display_box->AppendText("6");
+		UserValues.push_back(6);
 		break; 
 	}
 	case 107: 
 	{
 		display_box->AppendText("7");
+		UserValues.push_back(7);
 		break; 
 	}
 	case 108: 
 	{
 		display_box->AppendText("8");
+		UserValues.push_back(8);
 		break; 
 	}
 	case 109: 
 	{
 		display_box->AppendText("9");
+		UserValues.push_back(9);
 		break; 
 	}
 	case 110: 
 	{
 		display_box->AppendText("+");
+		AddOp = true; 
+		
 		break; 
 	}
 	case 111: 
 	{
 		display_box->AppendText("-");
+		SubOp = true;
 		break; 
 	}
 	case 112: 
 	{
 		display_box->AppendText("/");
+		DivideOp = true; 
 		break; 
 	}
 	case 113: 
 	{
 		display_box->AppendText("*");
+		MultOp = true; 
 		break; 
 	}
 	case 114: 
 	{
 		display_box->AppendText("=");
+		
+		
+		if (AddOp)
+		{
+			int val1 = UserValues.back();
+			UserValues.pop_back();
+			int val2 = UserValues.back();
+			UserValues.pop_back();
+
+			int result = CalProcessor->AddictionFunction(val1, val2, "+");
+			display_box->SetValue(std::to_string(result));	
+					
+		}
+		else if (SubOp)
+		{
+			int val2 = UserValues.back(); 
+			UserValues.pop_back(); 
+			int val3 = UserValues.back(); 
+			UserValues.pop_back(); 
+
+			int result2 = CalProcessor->SubtractionFunction(val2, val3, "-");
+			display_box->SetValue(std::to_string(result2));
+		}
+		else if (DivideOp)
+		{
+			int val4 = UserValues.back(); 
+			UserValues.pop_back();
+			int val5 = UserValues.back(); 
+			UserValues.pop_back(); 
+
+			int result3 = CalProcessor->DivisionFunction(val4, val5, "/");
+			display_box->SetValue(std::to_string(result3));
+		}
+		else if (MultOp)
+		{
+			int val6 = UserValues.back(); 
+			UserValues.pop_back(); 
+			int val7 = UserValues.back();
+			UserValues.pop_back(); 
+
+			int result4 = CalProcessor->MultiplyFunction(val6, val7, "*");
+			display_box->SetValue(std::to_string(result4));
+		}
+		else if (ModOp)
+		{
+			int val8 = UserValues.back();
+			UserValues.pop_back();
+			int val9 = UserValues.back();
+			UserValues.pop_back();
+
+			int result5 = CalProcessor->ModFunction(val8, val9, "Mod");
+			display_box->SetValue(std::to_string(result5));
+		}
+		
+		
+		AddOp = false;
+		SubOp = false;
+		DivideOp = false; 
+		MultOp = false; 
+		ModOp = false; 
+		
 		break; 
 	}
 	case 115: 
@@ -150,23 +233,36 @@ void cMain::OnButtonClick(wxCommandEvent& evt)
 	case 116: 
 	{
 		display_box->AppendText("Mod");
+		ModOp = true; 
+		
 		break; 
 	}
 	case 117: 
 	{
-		display_box->AppendText("Binary");
+		int val8 = UserValues.back();
+		UserValues.pop_back();
+
+		CalProcessor->SetBaseNumber(val8);
+		display_box->AppendText(CalProcessor->GetBinary());
+		 
 		break; 
 	}
 	case 118: 
 	{
-		
-		
-		display_box->AppendText("Hex");
+		int val9 = UserValues.back();
+		UserValues.pop_back();
+
+		CalProcessor->SetBaseNumber(val9);
+		display_box->AppendText(CalProcessor->GetHexadecimal());
 		break; 
 	}
 	case 119: 
 	{
-		display_box->AppendText("Decimal");
+		int val10 = UserValues.back();
+		UserValues.pop_back();
+
+		CalProcessor->SetBaseNumber(val10);
+		display_box->AppendText(CalProcessor->GetDecimal());
 		break; 
 	}
 	default:
