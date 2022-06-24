@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddCommand.h" />
     <ClInclude Include="cApp.h" />
     <ClInclude Include="cMain.h" />
     <ClInclude Include="IBaseCommand.h" />

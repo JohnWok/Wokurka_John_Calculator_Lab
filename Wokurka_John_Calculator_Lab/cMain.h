@@ -2,6 +2,8 @@
 
 #include "wx\wx.h"
 #include <vector>
+#include "IBaseCommand.h"
+#include "AddCommand.h"
 
 class cMain : public wxFrame
 {
@@ -71,6 +73,7 @@ public:
 private:
 	std::vector<int> UserValues; 
 
+	
 
 };
 

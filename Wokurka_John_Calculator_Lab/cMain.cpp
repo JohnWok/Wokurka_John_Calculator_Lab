@@ -65,9 +65,10 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(200,200), wxSi
 
 void cMain::OnButtonClick(wxCommandEvent& evt)
 {
-	int id = evt.GetId(); 
-
+	int id = evt.GetId();  
 	
+	AddCommand AddObject;
+
 	switch (id)
 	{
 	case 100: {
@@ -123,6 +124,8 @@ void cMain::OnButtonClick(wxCommandEvent& evt)
 	{
 		display_box->AppendText("+");
 		
+		
+		//AddObject.SetValue1() - we only know one number?
 		break; 
 	}
 	case 111: 
@@ -143,6 +146,9 @@ void cMain::OnButtonClick(wxCommandEvent& evt)
 	case 114: 
 	{
 		display_box->AppendText("=");
+
+		
+
 		break; 
 	}
 	case 115: 

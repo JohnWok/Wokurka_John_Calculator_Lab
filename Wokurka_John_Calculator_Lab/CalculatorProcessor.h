@@ -4,7 +4,7 @@
 #include "IBaseCommand.h"
 #include <vector>
 
-class CalculatorProcessor : public IBaseCommand
+class CalculatorProcessor 
 {
 private:
 	
@@ -14,6 +14,7 @@ private:
 	
 
 public:
+	
 	std::vector<IBaseCommand*> commands;
 	
 
@@ -25,6 +26,7 @@ public:
 		}
 		return _processor;
 	}
+
 	void SetBaseNumber(int number)
 	{
 	
@@ -42,9 +44,7 @@ public:
 
 	}
 
-	void Execute() {
-		GetDecimal();
-	}
+	
 
 	std::string GetHexadecimal()
 	{
@@ -90,11 +90,6 @@ public:
 		return results; 
 	}
 
-	void Execute()
-	{
-		GetHexadecimal(); 
-	}
-
 	std::string GetBinary()
 	{
 		std::string results = "";
@@ -117,29 +112,6 @@ public:
 	}
 
 	
-	
-
-
-	int AddictionFunction(int value1,int value2, std::string Operands)
-	{
-		int result = 0; 
-		
-		if (Operands == "+")
-		{
-			
-			result = value1 + value2; 
-			
-		}
-		return result; 
-
-
-	}
-
-	void ExecuteAddiction(int value1, int value2, std::string Operand)
-	{
-		AddictionFunction(value1, value2, Operand); 
-	}
-
 	int SubtractionFunction(int value1, int value2, std::string Operands)
 	{
 		int result2 = 0; 
