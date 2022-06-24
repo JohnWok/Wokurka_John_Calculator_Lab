@@ -1,4 +1,6 @@
 #include "cMain.h"
+#include "CalculatorProcessor.h"
+#include "IBaseCommand.h"
 
 wxBEGIN_EVENT_TABLE(cMain, wxFrame)
 EVT_BUTTON(100, cMain::OnButtonClick)
@@ -120,6 +122,7 @@ void cMain::OnButtonClick(wxCommandEvent& evt)
 	case 110: 
 	{
 		display_box->AppendText("+");
+		
 		break; 
 	}
 	case 111: 
