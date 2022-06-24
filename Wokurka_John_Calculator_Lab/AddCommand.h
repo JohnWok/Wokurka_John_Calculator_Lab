@@ -36,8 +36,10 @@ public:
 
 	}
 
-	void Execute()
+	int Execute(int val1, int val2)
 	{
+		SetValue1(val1);
+		SetValue2(val2);
 		AddictionFunction();
 	}
 

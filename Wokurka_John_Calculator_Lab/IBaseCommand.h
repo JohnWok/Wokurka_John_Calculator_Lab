@@ -3,7 +3,8 @@
 
 class IBaseCommand
 {
+
 public: 
-	virtual void Execute() = 0; 
+	virtual int Execute(int val1, int val2) = 0; 
 	
 };

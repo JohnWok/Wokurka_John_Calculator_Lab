@@ -10,6 +10,8 @@ private:
 	
 	static CalculatorProcessor* _processor; 
 	int baseNumber;
+	
+	std::vector<int> values;
 	CalculatorProcessor() {}
 	
 
@@ -27,11 +29,40 @@ public:
 		return _processor;
 	}
 
+	int Excute()
+	{
+		int result;
+		for (int i = 0; i < commands.size(); i++)
+		{
+			AddCommand addobject;
+			//addobject = (AddCommand)commands[i];		// how to determined what command is stored in the vector? 
+			/*addoject->setValue1(values.pop_back()); 
+			addoject->setValue2(values.pop_back());
+			int = addobject->execute();*/
+
+			//option 2:
+			commands[i]->Execute(values.pop_back(), values.pop_back());
+		}
+
+		return result;
+	}
+
 	void SetBaseNumber(int number)
 	{
 	
 		baseNumber = number;
 		
+	}
+
+	void SetValue(int _value1)
+	{
+		values.push_back(_value1);
+	}
+
+	void SetCommandObject(IBaseCommand* _command)
+	{
+		
+		commands.push_back(_command);
 	}
 
 	CalculatorProcessor(CalculatorProcessor& other) = delete; 

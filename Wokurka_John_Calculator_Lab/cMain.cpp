@@ -67,12 +67,15 @@ void cMain::OnButtonClick(wxCommandEvent& evt)
 {
 	int id = evt.GetId();  
 	
+	CalculatorProcessor* CalProcessor = CalculatorProcessor::GetInstance();
+
 	AddCommand AddObject;
 
 	switch (id)
 	{
 	case 100: {
 		display_box->AppendText("0");
+
 		break;
 	}
 	case 101: 
@@ -93,11 +96,13 @@ void cMain::OnButtonClick(wxCommandEvent& evt)
 	case 104: 
 	{
 		display_box->AppendText("4");
+		CalProcessor->SetValue(4);
 		break; 
 	}
 	case 105: 
 	{
 		display_box->AppendText("5");
+		CalProcessor->SetValue(5);
 		break; 
 	}
 	case 106: 
@@ -123,7 +128,7 @@ void cMain::OnButtonClick(wxCommandEvent& evt)
 	case 110: 
 	{
 		display_box->AppendText("+");
-		
+		CalProcessor->SetCommandObject(&AddObject);
 		
 		//AddObject.SetValue1() - we only know one number?
 		break; 
