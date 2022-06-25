@@ -192,19 +192,30 @@ void cMain::OnButtonClick(wxCommandEvent& evt)
 	}
 	case 117: 
 	{
-		display_box->AppendText("Binary");
+		int val8 = UserValues.back();
+		UserValues.pop_back();
+
+		CalProcessor->SetBaseNumber(val8);
+		display_box->AppendText(CalProcessor->GetBinary());
 		break; 
 	}
 	case 118: 
 	{
+		int val9 = UserValues.back();
+		UserValues.pop_back();
+
+		CalProcessor->SetBaseNumber(val9);
+		display_box->AppendText(CalProcessor->GetHexadecimal());
 		
-		
-		display_box->AppendText("Hex");
 		break; 
 	}
 	case 119: 
 	{
-		display_box->AppendText("Decimal");
+		int val10 = UserValues.back();
+		UserValues.pop_back();
+
+		CalProcessor->SetBaseNumber(val10);
+		display_box->AppendText(CalProcessor->GetDecimal());
 		break; 
 	}
 	default:
