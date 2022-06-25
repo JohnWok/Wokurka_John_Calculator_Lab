@@ -30,7 +30,7 @@ public:
 	{
 		int result = 0;
 
-		result = value1 + value2;
+		result = value2 + value1;
 
 		return result;
 
@@ -40,7 +40,7 @@ public:
 	{
 		SetValue1(val1);
 		SetValue2(val2);
-		AddictionFunction();
+		return AddictionFunction();
 	}
 
 

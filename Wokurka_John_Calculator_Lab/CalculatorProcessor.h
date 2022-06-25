@@ -29,19 +29,24 @@ public:
 		return _processor;
 	}
 
-	int Excute()
+	int Exceute()
 	{
-		int result;
+		int result = 0;
 		for (int i = 0; i < commands.size(); i++)
 		{
-			AddCommand addobject;
+			//AddCommand addobject;
 			//addobject = (AddCommand)commands[i];		// how to determined what command is stored in the vector? 
 			/*addoject->setValue1(values.pop_back()); 
 			addoject->setValue2(values.pop_back());
 			int = addobject->execute();*/
 
 			//option 2:
-			commands[i]->Execute(values.pop_back(), values.pop_back());
+			int val1 = values.back();
+			values.pop_back();
+			int val2 = values.back();
+			values.pop_back(); 
+			result = commands[i]->Execute(val1,val2);
+			commands.clear(); 
 		}
 
 		return result;
@@ -142,53 +147,6 @@ public:
 		return results; 
 	}
 
-	
-	int SubtractionFunction(int value1, int value2, std::string Operands)
-	{
-		int result2 = 0; 
-
-		if (Operands == "-")
-		{
-			result2 = value2 - value1; 
-		}
-		return result2; 
-	}
-
-	int DivisionFunction(int value1, int value2, std::string Operands)
-	{
-		int result3 = 0; 
-
-		if (Operands == "/")
-		{
-			result3 = value2 / value1; 
-		}
-		
-		return result3; 
-	}
-
-	int MultiplyFunction(int value1, int value2, std::string Operands)
-	{
-		int result4 = 0; 
-
-		if (Operands == "*")
-		{
-			result4 = value1 * value2; 
-		}
-
-		return result4; 
-	}
-
-	int ModFunction(int value1, int value2, std::string Operands)
-	{
-		int result5 = 0; 
-
-		if (Operands == "Mod")
-		{
-			result5 = value2 % value1; 
-		}
-
-		return result5; 
-	}
 };
 
 CalculatorProcessor* CalculatorProcessor::_processor = nullptr;

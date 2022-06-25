@@ -22,7 +22,11 @@
     <ClInclude Include="AddCommand.h" />
     <ClInclude Include="cApp.h" />
     <ClInclude Include="cMain.h" />
+    <ClInclude Include="DivideCommand.h" />
     <ClInclude Include="IBaseCommand.h" />
+    <ClInclude Include="ModCommand.h" />
+    <ClInclude Include="MultiplyCommand.h" />
+    <ClInclude Include="SubractCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cApp.cpp" />

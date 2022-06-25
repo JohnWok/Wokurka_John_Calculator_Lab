@@ -1,6 +1,11 @@
 #include "cMain.h"
 #include "CalculatorProcessor.h"
 #include "IBaseCommand.h"
+#include "AddCommand.h"
+#include "SubractCommand.h"
+#include "DivideCommand.h"
+#include "MultiplyCommand.h"
+#include "ModCommand.h"
 
 wxBEGIN_EVENT_TABLE(cMain, wxFrame)
 EVT_BUTTON(100, cMain::OnButtonClick)
@@ -70,27 +75,35 @@ void cMain::OnButtonClick(wxCommandEvent& evt)
 	CalculatorProcessor* CalProcessor = CalculatorProcessor::GetInstance();
 
 	AddCommand AddObject;
+	SubtractCommand SubObject; 
+	DivideCommand DivideObject; 
+	MuiltplyCommand MuiltObject; 
+	ModCommand ModObject; 
+	
 
 	switch (id)
 	{
 	case 100: {
 		display_box->AppendText("0");
-
+		CalProcessor->SetValue(0);
 		break;
 	}
 	case 101: 
 	{
 		display_box->AppendText("1");
+		CalProcessor->SetValue(1);
 		break; 
 	}
 	case 102: 
 	{
 		display_box->AppendText("2");
+		CalProcessor->SetValue(2);
 		break; 
 	}
 	case 103: 
 	{
 		display_box->AppendText("3");
+		CalProcessor->SetValue(3);
 		break; 
 	}
 	case 104: 
@@ -108,21 +121,25 @@ void cMain::OnButtonClick(wxCommandEvent& evt)
 	case 106: 
 	{
 		display_box->AppendText("6");
+		CalProcessor->SetValue(6);
 		break; 
 	}
 	case 107: 
 	{
 		display_box->AppendText("7");
+		CalProcessor->SetValue(7);
 		break; 
 	}
 	case 108: 
 	{
 		display_box->AppendText("8");
+		CalProcessor->SetValue(8);
 		break; 
 	}
 	case 109: 
 	{
 		display_box->AppendText("9");
+		CalProcessor->SetValue(9);
 		break; 
 	}
 	case 110: 
@@ -136,23 +153,29 @@ void cMain::OnButtonClick(wxCommandEvent& evt)
 	case 111: 
 	{
 		display_box->AppendText("-");
+		CalProcessor->SetCommandObject(&SubObject);
 		break; 
 	}
 	case 112: 
 	{
 		display_box->AppendText("/");
+		CalProcessor->SetCommandObject(&DivideObject);
 		break; 
 	}
 	case 113: 
 	{
 		display_box->AppendText("*");
+		CalProcessor->SetCommandObject(&MuiltObject);
 		break; 
 	}
 	case 114: 
 	{
 		display_box->AppendText("=");
 
-		
+		int result;
+		result = CalProcessor->Exceute(); 
+
+		display_box->SetValue(std::to_string(result));
 
 		break; 
 	}
@@ -164,6 +187,7 @@ void cMain::OnButtonClick(wxCommandEvent& evt)
 	case 116: 
 	{
 		display_box->AppendText("Mod");
+		CalProcessor->SetCommandObject(&ModObject);
 		break; 
 	}
 	case 117: 
@@ -186,4 +210,4 @@ void cMain::OnButtonClick(wxCommandEvent& evt)
 	default:
 		break;
 	}
-}
+};
