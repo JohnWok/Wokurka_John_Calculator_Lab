@@ -86,60 +86,70 @@ void cMain::OnButtonClick(wxCommandEvent& evt)
 	case 100: {
 		display_box->AppendText("0");
 		CalProcessor->SetValue(0);
+		UserValues.push_back(0);
 		break;
 	}
 	case 101: 
 	{
 		display_box->AppendText("1");
 		CalProcessor->SetValue(1);
+		UserValues.push_back(1);
 		break; 
 	}
 	case 102: 
 	{
 		display_box->AppendText("2");
 		CalProcessor->SetValue(2);
+		UserValues.push_back(2);
 		break; 
 	}
 	case 103: 
 	{
 		display_box->AppendText("3");
 		CalProcessor->SetValue(3);
+		UserValues.push_back(3);
 		break; 
 	}
 	case 104: 
 	{
 		display_box->AppendText("4");
 		CalProcessor->SetValue(4);
+		UserValues.push_back(4);
 		break; 
 	}
 	case 105: 
 	{
 		display_box->AppendText("5");
 		CalProcessor->SetValue(5);
+		UserValues.push_back(5);
 		break; 
 	}
 	case 106: 
 	{
 		display_box->AppendText("6");
 		CalProcessor->SetValue(6);
+		UserValues.push_back(6);
 		break; 
 	}
 	case 107: 
 	{
 		display_box->AppendText("7");
 		CalProcessor->SetValue(7);
+		UserValues.push_back(7);
 		break; 
 	}
 	case 108: 
 	{
 		display_box->AppendText("8");
 		CalProcessor->SetValue(8);
+		UserValues.push_back(8);
 		break; 
 	}
 	case 109: 
 	{
 		display_box->AppendText("9");
 		CalProcessor->SetValue(9);
+		UserValues.push_back(9);
 		break; 
 	}
 	case 110: 
