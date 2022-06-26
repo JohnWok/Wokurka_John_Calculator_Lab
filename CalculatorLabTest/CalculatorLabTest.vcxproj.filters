@@ -21,9 +21,18 @@
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Wokurka_John_Calculator_Lab\ButtonFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wokurka_John_Calculator_Lab\ButtonFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wokurka_John_Calculator_Lab\CalculatorProcessor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
