@@ -21,10 +21,10 @@ public:
 		}
 		return _processor;
 	}
-	int SetBaseNumber(int number)
+	void SetBaseNumber(int number)
 	{
 	
-		return baseNumber = number;
+		 baseNumber = number;
 		
 	}
 
@@ -161,7 +161,7 @@ public:
 	{
 		int result5 = 0; 
 
-		if (Operands == "Mod")
+		if (Operands == "%")
 		{
 			result5 = value2 % value1; 
 		}
