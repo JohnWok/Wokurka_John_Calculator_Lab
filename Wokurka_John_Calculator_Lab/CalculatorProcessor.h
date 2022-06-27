@@ -21,10 +21,10 @@ public:
 		}
 		return _processor;
 	}
-	void SetBaseNumber(int number)
+	int SetBaseNumber(int number)
 	{
 	
-		baseNumber = number;
+		return baseNumber = number;
 		
 	}
 
@@ -107,30 +107,30 @@ public:
 	
 
 
-	int AddictionFunction(int value1,int value2, std::string Operands)
+	int AddictionFunction(int value1, int value2, std::string Operands)
 	{
-		int result = 0; 
-		
+		int result = 0;
+
 		if (Operands == "+")
 		{
-			
-			result = value1 + value2; 
-			
+
+			result = value1 + value2;
+
 		}
-		return result; 
+		return result;
 
 
 	}
 
 	int SubtractionFunction(int value1, int value2, std::string Operands)
 	{
-		int result2 = 0; 
+		int result2 = 0;
 
 		if (Operands == "-")
 		{
-			result2 = value2 - value1; 
+			result2 = value2 - value1;
 		}
-		return result2; 
+		return result2;
 	}
 
 	int DivisionFunction(int value1, int value2, std::string Operands)
